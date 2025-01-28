@@ -6,6 +6,9 @@ const cors = require('cors');
 
 app.use(express.json());
 app.use(cors());
+app.use(cors({
+  origin: 'https://coderealm.vercel.app' 
+}));
 
 const db = mysql.createConnection({
   host: '193.203.184.109',         
