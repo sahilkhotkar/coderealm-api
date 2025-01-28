@@ -36,7 +36,7 @@ app.post('/contact', (req, res) => {
   db.query(query, [name, company, project, budget, contact, additionalInfo], (err, result) => {
     if (err) {
       console.error('Error inserting data: ' + err.stack);
-      return res.status(500).json({ message: 'Database error', error: err });
+      return res.status(500).json({ message: 'Database error', error: err.code });
     }
 
     return res.status(200).json({ message: 'Data inserted successfully', data: result });
