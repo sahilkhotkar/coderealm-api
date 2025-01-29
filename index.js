@@ -20,9 +20,9 @@ const db = mysql.createPool({
 app.post('/contact', (req, res) => {
   const { name, company, project, budget, contact, additionalInfo, date } = req.body;
 
-  if (!name || !company || !project || !budget || !contact) {
-    return res.status(400).json({ message: 'Missing required fields' });
-  }
+  // if (!name || !company || !project || !budget || !contact) {
+  //   return res.status(400).json({ message: 'Missing required fields' });
+  // }
 
   db.getConnection((err, connection) => {
     if (err) {
