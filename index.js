@@ -6,11 +6,11 @@ const PORT = 4000;
 
 app.use(express.json());
 // app.use(cors());
-app.use(cors({
-  origin: 'https://coderealm.vercel.app', // Replace with your frontend URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-}));
+// app.use(cors({
+//   origin: 'https://coderealm.vercel.app', // Replace with your frontend URL
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
+//   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+// }));
 const db = mysql.createConnection({
   host: '193.203.184.109',         
   user: 'u217412984_coderealm',           
