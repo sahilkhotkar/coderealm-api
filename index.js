@@ -42,12 +42,22 @@ app.post('/contact', (req, res) => {
 
   db.query(query, [name, company, project, budget, contact, additionalInfo, date], (err, result) => {
     if (err) {
+      console.log(err);
       console.error('Error inserting data: ' + err.stack);
       return res.status(500).json({ message: 'Database error', error: err });
     }
 
     return res.status(200).json({ message: 'Data inserted successfully', data: result });
+    
   });
+  db.end((err) => {
+    if (err) {
+      console.error('Error closing MySQL connection:', err.stack);
+    } else {
+      console.log('MySQL connection closed.');
+    }
+  });
+ 
 });
 
 
