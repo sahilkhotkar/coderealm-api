@@ -29,16 +29,17 @@ db.connect((err) => {
 
 
 app.post('/contact', (req, res) => {
-  const { name, company, project, budget, contact, additionalInfo } = req.body;
+  const { name, company, project, budget, contact, additionalInfo, date} = req.body;
+  // const currentDate = new Date(); // Get the current date
 
   if (!name || !company || !project || !budget || !contact) {
     return res.status(400).json({ message: 'Missing required fields' });
   }
 
-  const query = `INSERT INTO contact_form (name, company, project, budget, contact, additionalInfo)
-                 VALUES (?, ?, ?, ?, ?, ?)`;
+  const query = `INSERT INTO contact_form (name, company, project, budget, contact, additionalInfo, date)
+                 VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
-  db.query(query, [name, company, project, budget, contact, additionalInfo], (err, result) => {
+  db.query(query, [name, company, project, budget, contact, additionalInfo, date], (err, result) => {
     if (err) {
       console.error('Error inserting data: ' + err.stack);
       return res.status(500).json({ message: 'Database error', error: err });
@@ -47,6 +48,7 @@ app.post('/contact', (req, res) => {
     return res.status(200).json({ message: 'Data inserted successfully', data: result });
   });
 });
+
 
 app.get('/home', (req, res) => {
   res.status(200).json('Welcome, your app is working well');
